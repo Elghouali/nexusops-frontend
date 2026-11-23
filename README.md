@@ -1,16 +1,67 @@
-# React + Vite
+# NexusOps — Agency Operations Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**React frontend prototype for an agency management workspace.**
 
-Currently, two official plugins are available:
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+> **Project status:** UI prototype. Backend integration and end-to-end deployment have not been verified here.
 
-## React Compiler
+## Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+NexusOps experiments with an agency workspace containing a public landing page, sign-in flow, and dashboard interface. The frontend includes components for projects, marketing charts, integrations, and operational status indicators.
 
-## Expanding the ESLint configuration
+## Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **UI:** React 19, JavaScript, Tailwind CSS, Lucide icons.
+- **Build tooling:** Vite 8, ESLint.
+- **Charts & HTTP:** Recharts and Axios.
+- **Backend:** [NexusOps Spring Boot API](https://github.com/Elghouali/NexusOps-backend).
+
+## Run locally
+
+Prerequisites: a recent Node.js version compatible with Vite 8 and npm.
+
+```bash
+git clone https://github.com/Elghouali/nexusops-frontend.git
+cd nexusops-frontend
+npm install
+npm run dev
+```
+
+The Vite development server commonly uses **http://localhost:5173** unless the port is occupied.
+
+For quality checks and a production build:
+
+```bash
+npm run lint
+npm run build
+npm run preview
+```
+
+The API integration currently includes a **hard-coded** `http://localhost:8080/api` base URL in `src/api.js`. Start the companion backend there for local integration, or adjust the API client for your environment before deploying.
+
+## Source map
+
+```text
+src/
+├── App.jsx              Root view and theme state
+├── pages/
+│   ├── LandingPage.jsx
+│   ├── Login.jsx
+│   ├── Dashboard.jsx
+│   └── AuthPage.jsx
+├── components/           Project, chart, status, integration UI
+└── api.js                Axios configuration
+```
+
+## Production-readiness checklist
+
+- [ ] Move API base URLs to environment-based configuration
+- [ ] Verify complete authentication and logout behavior
+- [ ] Review JWT storage and browser security
+- [ ] Add UI tests and screenshot evidence
+- [ ] Verify an actual backend/frontend deployment
+
+**Author:** [Zakariae Elghouali](https://github.com/Elghouali)
